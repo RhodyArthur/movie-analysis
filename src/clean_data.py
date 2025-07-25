@@ -26,3 +26,10 @@ all_movies_df['genres'] = all_movies_df['genres'].apply(lambda x: extract_names(
 all_movies_df['spoken_languages'] = all_movies_df['spoken_languages'].apply(lambda x: extract_names(x))
 all_movies_df['production_countries'] = all_movies_df['production_countries'].apply(lambda x: extract_names(x))
 all_movies_df['production_companies'] = all_movies_df['production_companies'].apply(lambda x: extract_names(x))
+
+# handle missing values
+# Convert columns to proper types
+all_movies_df['budget'] = pd.to_numeric(all_movies_df['budget'], errors='coerce')
+all_movies_df['popularity'] = pd.to_numeric(all_movies_df['popularity'], errors='coerce')
+all_movies_df['revenue'] = pd.to_numeric(all_movies_df['revenue'], errors='coerce')
+all_movies_df['release_date'] = pd.to_datetime(all_movies_df['release_date'], errors='coerce')
