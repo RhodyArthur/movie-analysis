@@ -8,7 +8,7 @@ import time
 def fetch_movie_data(movie_ids):
     all_movie_data = []
     for movie_id in movie_ids:
-        endpoint = f"{BASE_URL}{movie_id}?api_key={TMDB_API_KEY}"
+        endpoint = f"{BASE_URL}{movie_id}?api_key={TMDB_API_KEY}&append_to_response=credits,genres"
         try:
             response = requests.get(endpoint)
             response.raise_for_status()
