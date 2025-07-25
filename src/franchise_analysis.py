@@ -14,3 +14,16 @@ franchise_summary = franchise_df.groupby('is_franchise').agg({
 
 print("\n Franchise vs. Standalone Movie Performance")
 print(franchise_summary)
+
+director_stats = franchise_df.groupby('director').agg({
+    'title': 'count',
+    'budget_musd': ['sum', 'mean'],
+    'revenue_musd': ['sum', 'mean'],
+    'vote_average': 'mean'
+}).sort_values(('revenue_musd', 'sum'), ascending=False)
+
+# Rename columns for clarity
+director_stats.columns = ['Total Movies', 'Total Budget', 'Avg Budget', 'Total Revenue', 'Avg Revenue', 'Avg Rating']
+
+print("\n🎬 Most Successful Directors")
+print(director_stats.head())
