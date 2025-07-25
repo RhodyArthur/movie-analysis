@@ -12,7 +12,7 @@ movie_ids = [0, 299534, 19995, 140607, 299536, 597, 135397,
 
 
 # convert data to a DataFrame
-all_movies_df = pd.DataFrame(fetch_movie_data(movie_ids))
+all_movies_df = pd.DataFrame(fetch_movie_data(movie_ids)) 
 
 # drop irrelevant columns
 columns_to_drop = ['adult', 'imdb_id', 'original_title', 'video', 'homepage']
@@ -62,6 +62,9 @@ plt.figure(figsize=(10, 6))
 sns.heatmap(all_movies_df.isna(), cbar=False, cmap='viridis')
 plt.title('Missing Values Heatmap')
 plt.show()
+
+# Fill null values in 'belongs_to_collection' with a placeholder
+all_movies_df['belongs_to_collection'].fillna('No Collection', inplace=True)
 
 # belongs_to_collection column contains 2 NaN values. budget, revenue, and runtime columns do not have 0 values.so no replacement is needed.
 
